@@ -1,0 +1,74 @@
+<div class="w-75 py-5 m-auto">
+
+
+    <div *ngIf="error" class="alert alert-danger">
+        {{error}}
+    </div>
+
+<form class="my-5" [formGroup]='registerForm'  (ngSubmit)='submitRegisterForm(registerForm)'>
+
+    <div class=" form-group">
+        <label for="first_name">first name :</label>
+        <input  formControlName="first_name"  class=" form-control" type="text" id="first_name">
+
+        <div *ngIf="registerForm.get('first_name')?.errors != null && registerForm.get('first_name')?.touched" class=" my-2 alert alert-danger">
+            <p *ngIf = "registerForm.get('first_name')?.errors?.required">first name is required</p>
+            <p *ngIf = "registerForm.get('first_name')?.errors?.maxLength">first name is maxLength 10</p>
+            <p *ngIf = "registerForm.get('first_name')?.errors?.minLength">first name is minLength 3</p>
+        </div>
+    </div>
+
+    
+    <div class=" form-group">
+        <label for="last_name">last name :</label>
+        <input  formControlName="last_name"  class=" form-control" type="text" id="last_name">
+
+        <div *ngIf="registerForm.get('last_name')?.errors != null && registerForm.get('last_name')?.touched" class=" my-2 alert alert-danger">
+            <p *ngIf = "registerForm.get('last_name')?.errors?.required">last name is required</p>
+            <p *ngIf = "registerForm.get('last_name')?.errors?.maxLength">last name is maxLength 10</p>
+            <p *ngIf = "registerForm.get('last_name')?.errors?.minLength">last name is minLength 3</p>
+        </div>
+    </div>
+
+    
+    <div class=" form-group">
+        <label for="age">age :</label>
+        <input  formControlName="age"  class=" form-control" type="number" id="age">
+
+        <div *ngIf = "registerForm.get('age')?.errors != null && registerForm.get('age')?.touched" class=" my-2 alert alert-danger">
+            <p *ngIf = "registerForm.get('age')?.errors?.required">age is required</p>
+            <p *ngIf = "registerForm.get('age')?.errors?.max">age is max 16</p>
+            <p *ngIf = "registerForm.get('age')?.errors?.min">age is min 80</p>
+        </div>
+    </div>
+
+    
+    <div class=" form-group">
+        <label for="email">Email :</label>
+        <input  formControlName="email"  class=" form-control" type="email" id="email">
+
+        <div *ngIf = "registerForm.get('email')?.errors != null && registerForm.get('email')?.touched" class=" my-2 alert alert-danger">
+            <p *ngIf = "registerForm.get('email')?.errors?.required" >Email is required</p>
+    
+        </div>
+    </div>
+
+    
+    <div class=" form-group">
+        <label for="password">password :</label>
+        <input  formControlName="password"  class=" form-control" type="password" id="password">
+
+        <div *ngIf = "registerForm.get('password')?.errors != null && registerForm.get('password')?.touched" class=" my-2 alert alert-danger">
+            <p *ngIf = "registerForm.get('password')?.errors?.required">Password is required</p>
+            <!-- <p *ngIf = "registerForm.get('password')?.errors?.pattern">Password must begain upperCase ...</p> -->
+        </div>
+    </div>
+
+
+    <button [disabled]="registerForm.invalid" class="btn btn-info" type="submit">Register Now</button>
+
+</form>
+
+
+
+</div>

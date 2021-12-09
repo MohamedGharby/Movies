@@ -1,0 +1,78 @@
+<app-home-header [trendingMovies]="trendingMovies"></app-home-header>
+
+
+<div class="container">
+    <div class="row align-items-center my-5">
+        
+        <div class="col-md-4">
+            
+            <div class="brdr w-25"></div>
+            <h2>Trending movies to watch right now</h2>
+            <p>most watched movies by days</p>
+            <div class="brdr w-25"></div>
+            
+        </div>
+        <div *ngFor="let movie of trendingMovies" class="col-md-2 text-center">
+            <a [routerLink]="['/moviedetails', movie.id]">
+                <div class="movie">
+                    <img class="w-100" [src]="mainPoster+movie.poster_path" [alt]="movie.title">
+                <h3 class="my-2 h6">{{movie.title}}</h3>
+    
+                <div class="vote">
+                    {{movie.vote_average}}
+                </div>
+                </div>
+            </a>
+            
+        </div>
+        
+    </div>
+
+
+    <div class="row align-items-center my-5">
+        
+        <div class="col-md-4">
+            
+            <div class="brdr w-25"></div>
+            <h2>Trending tv shows to watch right now</h2>
+            <p>most watched tv by days</p>
+            <div class="brdr w-25"></div>
+            
+        </div>
+
+        <div *ngFor="let tv of trendingTv" class="col-md-2 text-center">
+           <a [routerLink]='["/tvdetails", tv.id]'>
+            <div class="tv">
+                <img class="w-100" [src]="mainPoster+tv.poster_path" [alt]="tv.title">
+            <h3 class="my-2 h6">{{tv.title}}</h3>
+
+            <div class="vote">
+                {{tv.vote_average}}
+            </div>
+            </div>
+           </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="row align-items-center my-5">
+        
+        <div class="col-md-4">
+            
+            <div class="brdr w-25"></div>
+            <h2>Trending people to watch right now</h2>
+            <p>most watched people by days</p>
+            <div class="brdr w-25"></div>
+            
+        </div>
+
+        <div *ngFor="let person of trendingPeople" class="col-md-2 text-center">
+            <a [routerLink]="['/peopledetails',person.id]">
+                <img class="w-100" [src]="mainPoster+person.profile_path" [alt]="person.name">
+                <h3 class="my-2 h6">{{person.name}}</h3>
+            </a>
+        </div>
+    </div>
+</div>

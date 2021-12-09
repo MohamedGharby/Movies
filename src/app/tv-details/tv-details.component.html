@@ -1,0 +1,50 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-4 py-5">
+            <img class="w-100" [src]="mainPoster+tvDetails?.poster_path" alt="">
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+            <div class="py-5">
+                <h2>{{tvDetails?.name}}</h2>
+            <p class="secondFontColor">{{tvDetails?.tagline}}</p>
+            <div class="p-3">
+                <div class="genre" *ngFor='let genre of tvDetails?.genres'>
+                    <p>{{genre.name}}</p>
+                </div>
+                <div class="py-3">
+                    <p>Vote : {{tvDetails?.vote_average}}</p>
+                    <p>Vote count : {{tvDetails?.vote_count}}</p>
+                    <p>Popularity : {{tvDetails?.popularity}} </p>
+                    <p>First air date : {{tvDetails?.first_air_date}} </p>
+                    <p>status : {{tvDetails?.status}} </p>
+
+                </div>
+                <div class="my-5">
+                    <p class="secondFontColor">{{tvDetails?.overview}}</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class=" vh-100 d-flex align-items-center">
+
+
+    <div class="container">
+
+      <h1 class="my-5">You can watch too</h1>
+      <owl-carousel-o [options]="customOptions">
+
+        <ng-container *ngFor="let tv of similarTvShows">
+          <ng-template carouselSlide [id]="tv.name">
+            <a [routerLink]="[ '/tvdetails' , tv.id]">
+            <img class="w-100" [src]="mainPoster+tv.poster_path" [alt]="tv.name">
+            </a>
+          </ng-template>
+        </ng-container>
+    
+      </owl-carousel-o>
+    </div>
+
+</section>

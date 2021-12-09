@@ -1,0 +1,13 @@
+<div class="container py-5">
+    <div class="row">
+        <div *ngFor="let person of fullTrendingPeople" class="col-md-3 text-center py-5">
+               
+            <a [routerLink]="['/peopledetails',person.id]">
+                <img class="w-100" [src]="mainPoster+person.profile_path" [alt]="person.name">
+
+                <h3 class="my-2 h6">{{person.name}}</h3>
+            </a>
+               
+        </div>
+    </div>
+</div>
